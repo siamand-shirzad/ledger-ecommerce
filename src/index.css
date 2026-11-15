@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — "ledger" direction: a marketplace that keeps its books
+  in good order. Cool paper background, deep-ink text, a single muted-gold
+  stamp accent used sparingly for price/action emphasis. Prices and SKUs
+  are always set in monospace, like figures in a ledger column.
+*/
+@theme {
+  --color-bg: #f6f7fa;
+  --color-surface: #ffffff;
+  --color-ink: #131c33;
+  --color-ink-soft: #566079;
+  --color-ink-faint: #8b93a7;
+  --color-accent: #b1811f;
+  --color-accent-soft: #f3e6c6;
+  --color-accent-ink: #4a3810;
+  --color-line: #dde1e9;
+  --color-danger: #ae3d34;
+  --color-danger-soft: #f6e1de;
+  --color-success: #2f6b4f;
+  --color-success-soft: #dfeee6;
+
+  --font-display: ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ticket-stub card: the signature motif reused for product cards, cart
+   lines, and admin list rows — a torn-stub notch + dashed divider. */
+.stub {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+}
+
+.stub::before,
+.stub::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+.stub::before { left: -8px; }
+.stub::after { right: -8px; }
+
+.stub-divider {
+  border-top: 1px dashed var(--color-line);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
