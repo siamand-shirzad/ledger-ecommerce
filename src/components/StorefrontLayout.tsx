@@ -8,13 +8,7 @@ import { logout as logoutApi } from '@/api/auth'
 export default function StorefrontLayout() {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
-  const { isAuthenticated, role, name, email, logout } = useAuthStore((s) => ({
-    isAuthenticated: s.isAuthenticated,
-    role: s.role,
-    name: s.name,
-    email: s.email,
-    logout: s.logout,
-  }))
+  const { isAuthenticated, role, name, email, logout } = useAuthStore()
   const { data: cart } = useCart()
 
   function handleSearch(e: FormEvent) {
