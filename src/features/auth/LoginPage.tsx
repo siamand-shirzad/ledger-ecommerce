@@ -14,6 +14,9 @@ const schema = z.object({
 })
 type FormValues = z.infer<typeof schema>
 
+// Public demo account, registered on the API so visitors can browse without signing up.
+const DEMO: FormValues = { email: "demo@ledger-demo.dev", password: "ledger-demo-1234" }
+
 export default function LoginPage() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -56,6 +59,9 @@ export default function LoginPage() {
 
         <Button type="submit" disabled={isSubmitting} className="w-full">
           {isSubmitting ? 'Logging in…' : 'Log in'}
+        </Button>
+        <Button type="button" disabled={isSubmitting} className="w-full" onClick={() => onSubmit(DEMO)}>
+          Use demo account
         </Button>
       </form>
 
